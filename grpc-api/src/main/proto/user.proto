@@ -1,0 +1,24 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package="com.lsy.grpc.api";
+option java_outer_classname="UserServiceProto";
+option objc_class_prefix = "TS";
+
+package com.lsy.grpc.api;
+
+service UserService{
+    rpc AddUser (User) returns (ResponseModel) {}
+}
+
+message User {
+    string name=1;
+    string phone=2;
+    int32 age=3;
+}
+
+message ResponseModel {
+    bool code = 1;
+    string msg = 2;
+}
+
