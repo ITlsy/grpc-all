@@ -1,11 +1,11 @@
 package com.lsy.client;
 
-import com.lsy.grpc.api.ResponseModel;
-import com.lsy.grpc.api.User;
-import com.lsy.grpc.api.UserServiceGrpc;
+import com.lsy.grpc.api.*;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
+import java.io.IOException;
+import java.lang.String;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
@@ -34,7 +34,7 @@ public class UserClient {
         channel.shutdown().awaitTermination(5, TimeUnit.SECONDS);
     }
 
-    private ResponseModel invokeWay(String name, String phone, int age) {
+    private ResponseModel invokeWay(String name, String phone, int age) throws IOException {
         User user=User.newBuilder()
                 .setName(name)
                 .setPhone(phone)
@@ -44,15 +44,23 @@ public class UserClient {
         return responseModel;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    private Result getByname(String name) {
+        NameRequest aa= NameRequest.newBuilder().setName(name).build();
+        Result result=userService.getByName(aa);
+        return result;
+    }
+    public static void main(String[] args) throws InterruptedException, IOException {
         UserClient client=new UserClient(DEFAULT_HOST,DEFAULT_PORT);
-        ResponseModel responseModel=client.invokeWay("lsy","15978723505",20);
-        System.out.println(responseModel);
-        if(responseModel.getCode()){
-            System.out.println("保存成功");
+        //ResponseModel responseModel=client.invokeWay("lsy","15978723505",20);
+        Result result=client.getByname("lsy");
+        if(result.getCode()){
+            System.out.println("success");
+            logger.info("手机号"+result.getPhone());
         }else {
-            System.out.println("保存失败");
+            System.out.println("error");
         }
         client.shutdown();
     }
+
+
 }

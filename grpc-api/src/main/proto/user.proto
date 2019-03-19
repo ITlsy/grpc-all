@@ -9,6 +9,7 @@ package com.lsy.grpc.api;
 
 service UserService{
     rpc AddUser (User) returns (ResponseModel) {}
+    rpc GetByName(NameRequest) returns (Result) {}
 }
 
 message User {
@@ -17,8 +18,18 @@ message User {
     int32 age=3;
 }
 
+message NameRequest{
+    string name=1;
+}
+
 message ResponseModel {
     bool code = 1;
     string msg = 2;
 }
+
+message Result{
+    bool code=1;
+    string phone=2;
+}
+
 
