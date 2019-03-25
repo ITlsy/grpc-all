@@ -23,9 +23,9 @@
             <!--配置数据库连接池-->
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/grpc_tidb"/>
+                <property name="url" value="jdbc:mysql://192.168.214.3:4000/test"/>
                 <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <property name="password" value=""/>
             </dataSource>
         </environment>
     </environments>

@@ -11,10 +11,6 @@
        -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
-    <!--配置别名-->
-    <!--<typeAliases>
-        <typeAlias type="com.lsy.pojo.User" alias="User"/>
-    </typeAliases>-->
     <!--配置数据库环境-->
     <environments default="dev">
         <environment id="dev">
@@ -32,6 +28,6 @@
 
     <!--加载Mapper.xml文件-->
     <mappers>
-        <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/MessageMapper.xml"/>
     </mappers>
 </configuration>

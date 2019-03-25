@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ginkodrop.core.dao.source1.">
+<mapper namespace="com.lsy.nsqServer.dao.MessageMapper">
 
-    <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.ginkodrop.core.model.">
-        <id column="id" property="id"/>
-        <result column="first_name" property="firstName"/>
-        <result column="last_name" property="lastName"/>
-        <result column="appointment_content" property="appointmentContent"/>
-        <result column="appointment_identity" property="appointmentIdentity"/>
-        <result column="appointment_tel" property="appointmentTel"/>
-        <result column="appointment_email" property="appointmentEmail"/>
-        <result column="creation_time" property="creationTime"/>
-        <result column="last_modified" property="lastModified"/>
-        <result column="csn" property="csn"/>
-        <result column="user_id" property="userId"/>
-    </resultMap>
-
-    <!-- 通用查询结果列 -->
-    <sql id="Base_Column_List">
-        id, first_name, last_name, appointment_content, appointment_identity, appointment_tel, appointment_email,
-        creation_time, last_modified, csn,user_id
-    </sql>
-
+    <insert id="add" parameterType="com.lsy.grpc.api.NsqRequest">
+        INSERT INTO user (content) VALUES (#{content})
+    </insert>
 
 </mapper>

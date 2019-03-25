@@ -1,0 +1,22 @@
+syntax="proto3";
+
+option java_multiple_files=true;
+option java_package="com.lsy.grpc.api";
+option java_outer_classname="NsqServiceProto";
+option objc_class_prefix = "TS";
+
+package com.lsy.grpc.api;
+
+service NsqService{
+    rpc sendMessage (NsqRequest) returns (NsqResponse) {}
+}
+
+message NsqRequest {
+    string content=1;
+}
+
+
+message NsqResponse {
+    bool code = 1;
+    string msg = 2;
+}

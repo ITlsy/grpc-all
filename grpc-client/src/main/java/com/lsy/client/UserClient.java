@@ -49,13 +49,13 @@ public class UserClient {
         Result result=userService.getByName(aa);
         return result;
     }
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         UserClient client=new UserClient(DEFAULT_HOST,DEFAULT_PORT);
         //ResponseModel responseModel=client.invokeWay("lsy","15978723505",20);
         Result result=client.getByname("lsy");
         if(result.getCode()){
             System.out.println("success");
-            logger.info("手机号"+result.getPhone());
+            logger.info("手机号  "+result.getPhone());
         }else {
             System.out.println("error");
         }
